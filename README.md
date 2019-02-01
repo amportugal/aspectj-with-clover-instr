@@ -1,6 +1,6 @@
 # Performing code instrumentation with Clover (OpenClover) and AspectJ
 
-[Clover](https://openclover.org/) is a code coverage tool originally owned by Atlassian and afterwards open-sourced. AspectJ is a framework for Aspect-Oriented Programming. Both of these frameworks mess up with the source code, and from what I experience this can be troublesome. The following lists how we can make these work without any problems and provides three alternative ways for changing your plugins to achieve this same goal:
+[Clover](https://openclover.org/) is a code coverage tool originally owned by Atlassian and afterwards open-sourced. AspectJ is a framework for Aspect-Oriented Programming. Both of these frameworks mess up with the source code (or compiled code), and from what I experience this can be troublesome. The following lists how we can make these work without any problems and provides three alternative ways for changing your plugins to achieve this same goal:
 
 1. `maven-compiler-plugin` must not try to recompile already compiled code from `aspectj-maven-plugin`, therefore AspectJ compiler goals are run in `process-sources` phase;
 2. Both OpenClover and AspectJ add source code to each method, and therefore AspectJ may raise an unexpected code error. In order for this to work, one of three methods may be implemented:
